@@ -21,6 +21,7 @@ function! s:quickfix_cmd() abort
         \ copy(b:items),
         \ { _, v -> empty(v.text) ? bufname(v.bufnr) : v.text },
         \)
+  call map(lines, 'fnamemodify(simplify(v:val), ":~:.")')
   call setline(1, lines)
 endfunction
 
